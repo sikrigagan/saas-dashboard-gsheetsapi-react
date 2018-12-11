@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bulma": "^0.7.2",
     "dayjs": "^1.7.7",
     "fusioncharts": "^3.13.3",
     "react": "^16.6.3",
