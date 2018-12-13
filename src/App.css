@@ -1,32 +1,202 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600');
+
+html {
+    background-color: #F7F7FC !important;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+body {
+    font-family: Nunito;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar.is-spaced {
+    padding: 0.3rem 1.3rem !important;
 }
 
-.App-link {
-  color: #61dafb;
+.has-shadow {
+    box-shadow: 0 8px 10px 0 #eeeef1b0 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-item>span {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.navbar-end {
+    justify-content: flex-end;
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+}
+
+a.is-active {
+    font-weight: 600 !important;
+    background-image: radial-gradient(circle at center, hsl(217, 74%, 63%) 2.5px, transparent 2.5px) !important;
+    background-size: 5px 5px !important;
+    background-position: bottom center !important;
+    background-repeat: no-repeat !important;
+}
+
+a.navbar-item:hover {
+    background: none !important;
+    background-image: radial-gradient(circle at center, hsla(217, 71%, 53%, 0.7) 2.5px, transparent 2.5px) !important;
+    background-size: 5px 5px !important;
+    background-position: bottom center !important;
+    background-repeat: no-repeat !important;
+}
+
+a:focus {
+    outline: none;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.columns {
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.card {
+    box-shadow: 0 2px 5px 0 rgba(51, 51, 79, .07) !important;
+    border-radius: 6px !important;
+    overflow-y: hidden;
+}
+
+.columns-kpi {
+    margin-bottom: 0 !important;
+}
+
+.header {
+    font-weight: 600;
+    font-size: 1rem;
+    color: hsl(0, 0%, 21%);
+}
+
+#renewed-users-val,
+#new-users-val,
+#churned-users-val,
+#arr-val {
+    font-weight: 600;
+    font-size: 2.1rem;
+    color: hsl(217, 74%, 63%);
+}
+
+.has-chart {
+    padding: 1rem 1rem 0rem 1rem !important;
+}
+
+#mrr-val,
+#mrr-growth-val,
+#nr-val,
+#arpu-val,
+#cac-val,
+#ltv-val {
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: hsl(217, 74%, 63%);
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 10px;
+}
+
+.is-bottom-paddingless {
+    padding-bottom: 0 !important;
+}
+
+.has-paddingtop-size-1 {
+    padding-top: 2rem;
+}
+
+.has-down-val {
+    color: #E84C85;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.has-down-val::before {
+    content: ""attr(data-down)" ";
+}
+
+.has-up-val {
+    color: #12C457;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.has-up-val::before {
+    content: ""attr(data-up)" ";
+}
+
+#churned-users-changeper.has-up-val {
+    color: #E84C85;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+#churned-users-changeper.has-down-val {
+    color: #12C457;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+svg {
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: 6px !important;
+    bottom: -6px !important;
+}
+
+#renewed-users-changeper,
+#new-users-changeper,
+#churned-users-changeper,
+#arr-changeper,
+#mrr-changeper {
+    min-height: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .navbar .navbar-brand {
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+
+    .navbar .navbar-brand>.navbar-item {
+        display: inline-block;
+    }
+
+    .navbar-end .navbar-item {
+        text-align: center;
+        flex-grow: 1;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+    .has-block-display {
+        display: block !important;
+    }
+
+    .has-up-val,
+    .has-down-val {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+
+    .navbar-brand>.navbar-item>span {
+        display: block !important;
+    }
 }
