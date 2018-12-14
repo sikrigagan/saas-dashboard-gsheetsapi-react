@@ -12,7 +12,7 @@ FusionCharts.options.creditLabel = false;
 
 ReactFC.fcRoot(FusionCharts, Charts);
 
-const url = `https://sheets.googleapis.com/v4/spreadsheets/${ config.spreadsheetId }/values:batchGet?ranges=Sheet1&majorDimension=${ config.dimension }&key=${ config.apiKey }`;
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${ config.spreadsheetId }/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=${ config.apiKey }`;
 
 function formatMoney(num) {
     let si = [
@@ -373,7 +373,7 @@ class App extends Component {
         arrChangeperElem.innerHTML = "-";
         mrrChangeper = ((chartDataArr[chartDataArrLen-1].gross_revenue - chartDataArr[chartDataArrLen-2].gross_revenue)/chartDataArr[chartDataArrLen-2].gross_revenue*100).toFixed(0);
         nrChangeper = (( chartDataArr[chartDataArrLen-1].net_revenue - chartDataArr[chartDataArrLen-2].net_revenue ) / chartDataArr[chartDataArrLen-2].net_revenue * 100).toFixed(0);
-        mrrGrowthChangeper = (( chartDataArr[chartDataArrLen-1].mrr_growth - chartDataArr[chartDataArrLen-2].mrr_growth ) / chartDataArr[chartDataArrLen-2].mrr_growth * 100).toFixed(0);
+        mrrGrowthChangeper = (( chartDataArr[chartDataArrLen-1].mrr_growth - chartDataArr[chartDataArrLen-2].mrr_growth )).toFixed(2);
         arpuChangeper = (( chartDataArr[chartDataArrLen-1].arpu - chartDataArr[chartDataArrLen-2].arpu ) / chartDataArr[chartDataArrLen-2].arpu * 100).toFixed(0);
         cacChangeper = (( chartDataArr[chartDataArrLen-1].cac - chartDataArr[chartDataArrLen-2].cac ) / chartDataArr[chartDataArrLen-2].cac * 100).toFixed(0);
         ltvChangeper = (( chartDataArr[chartDataArrLen-1].ltv - chartDataArr[chartDataArrLen-2].ltv ) / chartDataArr[chartDataArrLen-2].ltv * 100).toFixed(0);
@@ -401,7 +401,7 @@ class App extends Component {
             mrrGrowthChangeperElem.innerHTML = Math.abs(mrrGrowthChangeper) + '%';
             mrrGrowthChangeperElem.classList.add('has-down-val');
         } else if(mrrGrowthChangeper >= 0 ) {
-            mrrGrowthChangeperElem.innerHTML = mrrGrowthChangeper + '%';
+            mrrGrowthChangeperElem.innerHTML = Math.abs(mrrGrowthChangeper) + '%';
             mrrGrowthChangeperElem.classList.add('has-up-val');
         }
 
@@ -439,7 +439,7 @@ class App extends Component {
       arrChangeper = ((arrVal-prevArrVal)/prevArrVal*100).toFixed(0);
       mrrChangeper = ((chartDataArr[chartDataArrLen-1].gross_revenue - chartDataArr[chartDataArrLen-2].gross_revenue)/chartDataArr[chartDataArrLen-2].gross_revenue*100).toFixed(0);
       nrChangeper = (( chartDataArr[chartDataArrLen-1].net_revenue - chartDataArr[chartDataArrLen-2].net_revenue ) / chartDataArr[chartDataArrLen-2].net_revenue * 100).toFixed(0);
-      mrrGrowthChangeper = (( chartDataArr[chartDataArrLen-1].mrr_growth - chartDataArr[chartDataArrLen-2].mrr_growth ) / chartDataArr[chartDataArrLen-2].mrr_growth * 100).toFixed(0);
+      mrrGrowthChangeper = (( chartDataArr[chartDataArrLen-1].mrr_growth - chartDataArr[chartDataArrLen-2].mrr_growth )).toFixed(2);
       arpuChangeper = (( chartDataArr[chartDataArrLen-1].arpu - chartDataArr[chartDataArrLen-2].arpu ) / chartDataArr[chartDataArrLen-2].arpu * 100).toFixed(0);
       cacChangeper = (( chartDataArr[chartDataArrLen-1].cac - chartDataArr[chartDataArrLen-2].cac ) / chartDataArr[chartDataArrLen-2].cac * 100).toFixed(0);
       ltvChangeper = (( chartDataArr[chartDataArrLen-1].ltv - chartDataArr[chartDataArrLen-2].ltv ) / chartDataArr[chartDataArrLen-2].ltv * 100).toFixed(0);
@@ -505,7 +505,7 @@ class App extends Component {
         mrrGrowthChangeperElem.innerHTML = Math.abs(mrrGrowthChangeper) + '%';
         mrrGrowthChangeperElem.classList.add('has-down-val');
       } else if(mrrGrowthChangeper >= 0 ) {
-        mrrGrowthChangeperElem.innerHTML = mrrGrowthChangeper + '%';
+        mrrGrowthChangeperElem.innerHTML = Math.abs(mrrGrowthChangeper) + '%';
         mrrGrowthChangeperElem.classList.add('has-up-val');
       }
 
@@ -575,7 +575,6 @@ class App extends Component {
         }
         rows.push(rowObject);
       }
-     // console.log(rows);
       
       this.setState({ items: rows }, () => this.getData('2018'));
     });
@@ -591,9 +590,11 @@ class App extends Component {
                       by FusionCharts</span></div>
           </div>
           <div className="navbar-end" aria-label="menu" aria-expanded="false">
+              {/* eslint-disable */}
               <a id="btn-2018" className="navbar-item is-active has-text-link" href="#" onClick={this.updateDashboard}>2018</a>
               <a id="btn-2017" className="navbar-item" href="#" onClick={this.updateDashboard}>2017</a>
               <a id="btn-2016" className="navbar-item" herf="#" onClick={this.updateDashboard}>2016</a>
+              {/* eslint-enable */}
           </div>
         </nav>
 
