@@ -8,13 +8,11 @@ import chartCosmetics from './chartCosmetics';
 import '../node_modules/bulma/css/bulma.css';
 import './App.css';
 
-FusionCharts.options.creditLabel = false;
-
 ReactFC.fcRoot(FusionCharts, Charts);
 
 const url = `https://sheets.googleapis.com/v4/spreadsheets/${ config.spreadsheetId }/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=${ config.apiKey }`;
 
-function formatMoney(num) {
+function formatNum(num) {
     let si = [
         { value: 1, symbol: "" },
         { value: 1E3, symbol: "K" },
@@ -354,16 +352,16 @@ class App extends Component {
     this.setState({ ltvChartData: ltvChartConfig });
 
     // feeding kpi card values and chart kpi tickers
-    document.getElementById('renewed-users-val').innerHTML = renewedUsersVal;
-    document.getElementById('new-users-val').innerHTML = newUsersVal;
-    document.getElementById('churned-users-val').innerHTML = churnedUsersVal;
-    document.getElementById('arr-val').innerHTML = `$${ formatMoney(arrVal) }`;
-    document.getElementById('mrr-val').innerHTML = `$${ formatMoney(chartDataArr[chartDataArrLen-1].gross_revenue) }`;
-    document.getElementById('nr-val').innerHTML = `$${ formatMoney(chartDataArr[chartDataArrLen-1].net_revenue) }`;
+    document.getElementById('renewed-users-val').innerHTML = formatNum(renewedUsersVal);
+    document.getElementById('new-users-val').innerHTML = formatNum(newUsersVal);
+    document.getElementById('churned-users-val').innerHTML = formatNum(churnedUsersVal);
+    document.getElementById('arr-val').innerHTML = `$${ formatNum(arrVal) }`;
+    document.getElementById('mrr-val').innerHTML = `$${ formatNum(chartDataArr[chartDataArrLen-1].gross_revenue) }`;
+    document.getElementById('nr-val').innerHTML = `$${ formatNum(chartDataArr[chartDataArrLen-1].net_revenue) }`;
     document.getElementById('mrr-growth-val').innerHTML = `${ chartDataArr[chartDataArrLen-1].mrr_growth }%`;
-    document.getElementById('arpu-val').innerHTML = `$${ formatMoney(chartDataArr[chartDataArrLen-1].arpu) }`;
-    document.getElementById('cac-val').innerHTML = `$${ formatMoney(chartDataArr[chartDataArrLen-1].cac) }`;
-    document.getElementById('ltv-val').innerHTML = `$${ formatMoney(chartDataArr[chartDataArrLen-1].ltv) }`;
+    document.getElementById('arpu-val').innerHTML = `$${ formatNum(chartDataArr[chartDataArrLen-1].arpu) }`;
+    document.getElementById('cac-val').innerHTML = `$${ formatNum(chartDataArr[chartDataArrLen-1].cac) }`;
+    document.getElementById('ltv-val').innerHTML = `$${ formatNum(chartDataArr[chartDataArrLen-1].ltv) }`;
 
     // feeding KPI change and chart kpi tickers
     if((parseInt(arg))===2016) {
