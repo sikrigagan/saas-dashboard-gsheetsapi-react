@@ -1,5 +1,7 @@
 # Dashboard with Google Sheets in React
 
+[**Blog Link**](https://webdesign.tutsplus.com/tutorials/building-a-saas-dashboard-with-google-sheets-in-react--cms-32425?_ga=2.268808625.1792686264.1548669325-1321255040.1548669325)
+
 **Steps to run the project**:
 1. After cloning the repository, use `npm install` to install all the dependencies needed.
 2. Run `npm start` to run project in development server. (Refer to more scripts mentioned below)
